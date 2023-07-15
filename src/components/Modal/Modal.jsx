@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Overlay, ModalItem } from './ModalStyled';
 
 export default class Modal extends Component {
   handleKeyDown = e => {
@@ -21,14 +23,19 @@ export default class Modal extends Component {
 
   render() {
     return (
-      <div className="overlay">
-        <div className="modal">
+      <Overlay className="overlay" onClick={this.handleClickOverlay}>
+        <ModalItem className="modal">
           <img
             src={this.props?.modalData?.largeImageURL}
             alt={this.props?.modalData?.tags}
           />
-        </div>
-      </div>
+        </ModalItem>
+      </Overlay>
     );
   }
 }
+
+Modal.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+  modalData: PropTypes.object.isRequired,
+};

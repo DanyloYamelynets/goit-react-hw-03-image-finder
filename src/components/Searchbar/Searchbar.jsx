@@ -1,4 +1,12 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import {
+  SearchbarItem,
+  SearchForm,
+  SearchFormButton,
+  SearchFormLabel,
+  SearchFormInput,
+} from './SearchbarStyled';
 
 export default class Searchbar extends Component {
   state = {
@@ -18,13 +26,13 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <header className="searchbar">
-        <form onSubmit={this.onSubmit} className="form">
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
-          </button>
+      <SearchbarItem className="searchbar">
+        <SearchForm onSubmit={this.onSubmit} className="form">
+          <SearchFormButton type="submit" className="button">
+            <SearchFormLabel className="button-label">Search</SearchFormLabel>
+          </SearchFormButton>
 
-          <input
+          <SearchFormInput
             onChange={this.handleInputChange}
             value={this.state.searchValue}
             className="input"
@@ -33,8 +41,12 @@ export default class Searchbar extends Component {
             autoFocus
             placeholder="Search images and photos"
           />
-        </form>
-      </header>
+        </SearchForm>
+      </SearchbarItem>
     );
   }
 }
+
+Searchbar.propsTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

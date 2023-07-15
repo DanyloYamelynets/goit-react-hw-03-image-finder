@@ -6,6 +6,7 @@ import Modal from './Modal/Modal';
 import Button from './Button/Button';
 import Loader from './Loader/Loader';
 import Notiflix from 'notiflix';
+import { AppCont } from './AppStyled';
 
 export class App extends Component {
   state = {
@@ -70,7 +71,7 @@ export class App extends Component {
     const { images, isLoading, error, modal, noImagesLeft } = this.state;
     const showLoadMoreBtn = images.length > 0 && !isLoading && !noImagesLeft;
     return (
-      <div>
+      <AppCont>
         <Searchbar onSubmit={this.onSubmit} />
 
         {error && <div>Error: {error}</div>}
@@ -88,7 +89,7 @@ export class App extends Component {
           Notiflix.Notify.failure(
             "We're sorry, but you've reached the end of search results."
           )}
-      </div>
+      </AppCont>
     );
   }
 }
