@@ -32,7 +32,7 @@ export class App extends Component {
           images:
             currentPage === 1
               ? images.hits
-              : [...this.state.images, ...images.hits],
+              : [...prevState.images, ...images.hits],
           error: null,
           noImagesLeft: images.hits.length === 0 && currentPage > 1,
         });
